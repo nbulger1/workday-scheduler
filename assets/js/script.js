@@ -42,4 +42,36 @@ console.log(timedTasks[0].time)
 
 //save button --> local storage
 
+var saveBtnEl = document.querySelectorAll(".saveBtn");
+var newTask = [];
+
+for (var i = 0; i < saveBtnEl.length; i++) {
+    saveBtnEl[i].addEventListener("click", function(event){
+        event.preventDefault();
+        
+        for(j=0; j<taskInputEl.length; j++) {
+            if(taskInputEl[j].value != ""){
+                newTask.splice(j, 0, taskInputEl[j].value.trim());
+                localStorage.setItem("tasks", JSON.stringify(newTask));
+            };
+        };
+        
+        console.log(newTask)
+    });
+};
+
+//take things out of local storage and populate on page load?
+
+// $(window).on('load', function(){
+    
+//     var newTaskReload = JSON.parse(localStorage.getItem("tasks")) || [];
+
+//     console.log("On Load New Task:", newTaskReload);
+
+//     for(i=0; i<newTaskReload.length; i++){
+//         taskInputEl[i].value = newTaskReload[i];
+//     }
+
+// });
+
 //refresh --> tasks are still there
