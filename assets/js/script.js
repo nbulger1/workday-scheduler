@@ -3,63 +3,29 @@ var currentDay = moment();
 $("#currentDay").text(currentDay.format("MMM Do, YYYY"));
 
 //Create time blocks
-var timedTasks = [
-    {time: "09:00 am", task: ""},
-    {time: "10:00 am", task: ""},
-    {time: "11:00 am", task: ""},
-    {time: "12:00 pm", task: ""},
-    {time: "01:00 pm", task: ""},
-    {time: "02:00 pm", task: ""},
-    {time: "03:00 pm", task: ""},
-    {time: "04:00 pm", task: ""},
-    {time: "05:00 pm", task: ""}
+var timedTasks = ["09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"]
 
-];
 //Populating times on browser
 var timeEl = document.querySelectorAll(".time");
-for(i=0; i<timeEl.length; i++){
-    timeEl[i].textContent = timedTasks[i].time;
+for(var i=0; i<timeEl.length; i++){
+    timeEl[i].textContent = timedTasks[i];
 };
 
 //Change the color of each timeblock based on calculated past present and future using moment
-//Me trying lots of different things :)
-var timeNow = moment().format("hh:mm a");
-console.log(timeNow);
-
-//get the actual hour of the time - if the block hour is less than current hour then add/remove this class - moment.hours - look into this for comparison :) splice up times to direct compare parse int stuff
-
-//Starting thinking I needed to make each time into it's own variable?
-for(i=0; i<timedTasks.length; i++){
-    var timeToCheck = timedTasks[i].time;
-}
-
-//only gave me 05:00 pm which makes sense
-console.log(timeToCheck)
-
-//selecting all my input fields because I want to change their background color
+var hourNow = moment().hours();
+console.log(hourNow);
 var taskInputEl = document.querySelectorAll(".task_input");
 
-//original for loop that was my plan for coloring each input section
-for(i=0; i<taskInputEl.length; i++){
-    if(moment().isAfter(timedTasks[i].time, "hh:mm a")){
-        taskInputEl[i].style.backgroundColor="#d3d3d3";
-    } else if(moment().isBefore(timedTasks[i].time, "hh:mm a")){
-        taskInputEl[i].style.backgroundColor="#77dd77";
-    }
+for(var i=0; i<timedTasks.length; i++){
+    var substringTime = parseInt(timedTasks[i].substring(0,2));
+    if(substringTime == hourNow){
+        taskInputEl[i].className += " present";
+    } else if (substringTime < hourNow){
+        taskInputEl[i].className += " past";
+    } else {
+        taskInputEl[i].className += " future";
+    };
 }
-
-//Now trying to change
-jumbotronEl = document.querySelector('.jumbotron')
-
-var yesOrNo = moment().isAfter('05:00 pm')
-console.log(yesOrNo)
-
-console.log(timeEl)
-console.log(timedTasks[0].time)
-//Where I stopped trying things
-
-
-
 
 //save button --> local storage
 
@@ -74,7 +40,7 @@ for (var i = 0; i < saveBtnEl.length; i++) {
         event.preventDefault();
         //have to clear out new task!!!! :)
         newTask = [];
-        for(j=0; j<taskInputEl.length; j++) {
+        for(var j=0; j<taskInputEl.length; j++) {
             newTask.splice(j, 0, taskInputEl[j].value.trim());
             localStorage.setItem("tasks", JSON.stringify(newTask));
         };
@@ -91,11 +57,11 @@ $(window).on('load', function(){
 
     console.log("On Load New Task:", newTaskReload);
 
-    for(i=0; i<newTaskReload.length; i++){
+    for(var i=0; i<newTaskReload.length; i++){
         taskInputEl[i].value = newTaskReload[i];
     }
 
 });
 
-//add a clear button to clear out tasks
+//add a clear button to clear out tasks?
 
