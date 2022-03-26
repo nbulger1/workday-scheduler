@@ -86,6 +86,7 @@ textarea {
 
 .saved {
   font-style: italic;
+  display: none;
 }
 
 footer {
