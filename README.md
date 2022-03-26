@@ -51,6 +51,7 @@ To test the application I went through each of the acceptance criteria to make s
 - Tasks save with the save button
 - Tasks presist through page load
 
+![GIF demonstrating testing the workday schedular for a variety of conditions as well as assessing all button functionality]()
 
 ## Link
 
