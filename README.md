@@ -55,7 +55,7 @@ To test the application I went through each of the acceptance criteria to make s
 
 ## Link
 
-See the following for the link to my deployed application: 
+See the following for the link to my deployed application: https://nbulger1.github.io/workday-scheduler/
 
 
 
