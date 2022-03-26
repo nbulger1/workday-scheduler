@@ -36,11 +36,21 @@ I looped through my time block array to substring each time into an hour variabl
 
 ## Save
 
-In order to save each of the input fields I created a "tasks" field in local storage that I store items in as a stringifyed array. I looped through the
+In order to save each of the input fields I created a "tasks" field in local storage that I store items in as a stringifyed array. I looped through the input fields and saved the tasks into the array. I used the splice method to pull out previous tasks and replace them with the current ones. 
 
 ## Reload
 
+On page reload I pulled from the local storage "tasks" field and repopulated the tasks into their corresponding input field. I also created a "clear all tasks" button at the top of the page so the user could clear out their previous tasks by clearing local storage and reloading the page. 
+
 ## Tests
+
+To test the application I went through each of the acceptance criteria to make sure I met the user's goals for the application. 
+- Current date displayed at the top
+- Timeblocks present upon scrolling down
+- Timeblocks are color coded based on past, present, and future
+- Tasks save with the save button
+- Tasks presist through page load
+
 
 ## Link
 
